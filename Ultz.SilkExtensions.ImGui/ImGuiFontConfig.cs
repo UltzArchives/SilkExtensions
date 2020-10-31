@@ -2,7 +2,7 @@
 
 namespace Ultz.SilkExtensions.ImGui
 {
-    public struct ImGuiFontConfig
+    public readonly struct ImGuiFontConfig
     {
         public ImGuiFontConfig(string fontPath, int fontSize)
         {
