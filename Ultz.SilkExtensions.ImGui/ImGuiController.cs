@@ -37,7 +37,7 @@ namespace Ultz.SilkExtensions.ImGui
         /// <summary>
         /// Constructs a new ImGuiController.
         /// </summary>
-        public ImGuiController(GL gl, IView view, IInputContext input)
+        public ImGuiController(GL gl, IView view, IInputContext input, ImGuiFontConfig imGuiFontConfig)
         {
             _gl = gl;
             _glVersion = new Version(gl.GetInteger(GLEnum.MajorVersion), gl.GetInteger(GLEnum.MinorVersion));
@@ -49,7 +49,16 @@ namespace Ultz.SilkExtensions.ImGui
             IntPtr context = ImGuiNET.ImGui.CreateContext();
             ImGuiNET.ImGui.SetCurrentContext(context);
             var io = ImGuiNET.ImGui.GetIO();
-            io.Fonts.AddFontDefault();
+
+            if (imGuiFontConfig == null)
+            {
+                io.Fonts.AddFontDefault();
+            }
+            else
+            {
+                io.Fonts.AddFontFromFileTTF(imGuiFontConfig.FontPath, imGuiFontConfig.FontSize);
+            }
+
 
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset;
 
