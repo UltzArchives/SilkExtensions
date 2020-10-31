@@ -23,7 +23,7 @@ namespace Example.ImGui
             IInputContext inputContext = null;
 
             var projectDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory!, @"..\..\.."));
-            var fontPath = Path.Combine(projectDir, "segoeui.ttf");
+            var fontPath = Path.Combine(projectDir, "OpenSans-Regular.ttf");
             var fontConfig = new ImGuiFontConfig(fontPath, 30);
 
             // Our loading function
