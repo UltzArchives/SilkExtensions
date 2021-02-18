@@ -15,8 +15,6 @@ namespace Ultz.SilkExtensions.ImGui
         public const InternalFormat Srgb8Alpha8 = (InternalFormat)GLEnum.Srgb8Alpha8;
         public const InternalFormat Rgb32F = (InternalFormat)GLEnum.Rgb32f;
 
-        public const GetPName MaxTextureMaxAnisotropy = (GetPName)0x84FF;
-
         public static float? MaxAniso;
         private readonly GL _gl;
         public readonly string Name;
@@ -27,7 +25,7 @@ namespace Ultz.SilkExtensions.ImGui
         public unsafe Texture(GL gl, string name, int width, int height, IntPtr data, bool generateMipmaps = false, bool srgb = false)
         {
             _gl = gl;
-            MaxAniso ??= gl.GetFloat(MaxTextureMaxAnisotropy);
+            MaxAniso ??= gl.GetFloat(GLEnum.MaxTextureMaxAnisotropy);
             Name = name;
             Width = (uint) width;
             Height = (uint) height;
